@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lag Fix & 90 FPS Booster Engine | Free Fire</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07090e;
+      --card: #10141f;
+      --border: #1e2638;
+      --red: #ff2252;
+      --cyan: #00f0ff;
+      --yellow: #ffb703;
+      --green: #00e676;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    body { background-color: var(--bg); color: var(--text); padding: 15px 10px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+    .top-bar { width: 100%; max-width: 500px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 600; margin-right: 10px; }
+    .nav-links a:hover { color: var(--green); }
+    .badge { background: rgba(0, 230, 118, 0.15); border: 1px solid var(--green); color: var(--green); padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+    .header { text-align: center; margin-bottom: 20px; width: 100%; max-width: 500px; }
+    .header h1 { font-family: 'Orbitron', sans-serif; font-size: 1.7rem; font-weight: 900; text-transform: uppercase; color: #fff; }
+    .header h1 span { color: var(--green); }
+    .header p { color: var(--muted); font-size: 0.82rem; margin-top: 5px; }
+
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; width: 100%; max-width: 500px; box-shadow: 0 10px 40px rgba(0,0,0,0.6); margin-bottom: 15px; }
+    .input-group { margin-bottom: 14px; }
+    label { display: block; font-family: 'Rajdhani', sans-serif; font-size: 0.95rem; font-weight: 700; color: #cbd5e1; margin-bottom: 6px; text-transform: uppercase; }
+    input[type="text"], select { width: 100%; padding: 12px 14px; background: #07090e; border: 1px solid var(--border); border-radius: 8px; color: #fff; font-size: 0.95rem; outline: none; }
+    input[type="text"]:focus, select:focus { border-color: var(--green); }
+
+    .row { display: flex; gap: 10px; }
+    .col { flex: 1; }
+
+    .btn-calc { width: 100%; padding: 14px; background: linear-gradient(135deg, var(--green), #00b4d8); border: none; border-radius: 8px; color: #07090e; font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 900; text-transform: uppercase; cursor: pointer; margin-top: 10px; }
+    .btn-calc:active { transform: scale(0.98); }
+
+    .results { display: none; margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+    .stat-box { background: #07090e; border: 1px solid var(--border); border-radius: 8px; padding: 12px; text-align: center; }
+    .stat-box span { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; font-weight: 700; display: block; }
+    .stat-box .num { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; font-weight: 900; margin-top: 4px; }
+
+    .alert-box { background: rgba(255, 34, 82, 0.08); border-left: 3px solid var(--red); padding: 12px; border-radius: 6px; margin-bottom: 15px; font-size: 0.82rem; line-height: 1.45; }
+    .alert-box strong { color: var(--red); }
+
+    .fix-box { background: #07090e; border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
+    .fix-box h4 { font-family: 'Rajdhani', sans-serif; font-size: 0.95rem; color: var(--cyan); text-transform: uppercase; margin-bottom: 8px; }
+    .fix-box ol { padding-left: 18px; font-size: 0.82rem; color: #cbd5e1; line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="nav-links">
+      <a href="index.html">← Hub</a>
+      <a href="sensi.html">Sensi</a>
+      <a href="dpi.html">DPI</a>
+      <a href="tricks.html">Tricks</a>
+    </div>
+    <span class="badge">FPS Engine</span>
+  </div>
+
+  <div class="header">
+    <h1>FPS BOOSTER & <span>LAG FIX</span></h1>
+    <p>Zero Frame Drops • Faster Touch Response • Stable Smooth Gaming</p>
+  </div>
+
+  <div class="card">
+    <div class="input-group">
+      <label>Device Name (Keyboard se Type Karo):</label>
+      <input type="text" id="phoneName" placeholder="e.g. Realme P4x, Redmi Note 11, Vivo Y20..." autocomplete="off">
+    </div>
+
+    <div class="row">
+      <div class="col input-group">
+        <label>Device RAM:</label>
+        <select id="ram">
+          <option value="3">3 GB RAM</option>
+          <option value="4" selected>4 GB RAM</option>
+          <option value="6">6 GB RAM</option>
+          <option value="8">8 GB+ RAM</option>
+        </select>
+      </div>
+      <div class="col input-group">
+        <label>Main Problem:</label>
+        <select id="issue">
+          <option value="freeze">Close-Range Stutter / Hang</option>
+          <option value="touch">Touch Delay / Slow Drag</option>
+          <option value="heat">Overheating & Battery Drain</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn-calc" onclick="optimizeDevice()">Generate FPS Optimization ⚡</button>
+
+    <div class="results" id="resBox">
+      <div class="grid-2">
+        <div class="stat-box">
+          <span>In-Game Graphics</span>
+          <div class="num" style="color:var(--green);" id="valGfx">--</div>
+        </div>
+        <div class="stat-box">
+          <span>In-Game FPS Setting</span>
+          <div class="num" style="color:var(--cyan);" id="valFps">--</div>
+        </div>
+      </div>
+
+      <div class="alert-box">
+        <strong>⚠️ Pro Secret (Virtual RAM OFF Karo):</strong> Phones me jo <i>RAM Plus / Virtual RAM Expansion</i> ka feature hota hai, wo slow storage memory use karta hai. Isse gaming me massive frame drops aur phone heat hota hai. Isko <strong>Settings > RAM Expansion me jakar OFF</strong> kar dein!
+      </div>
+
+      <div class="fix-box">
+        <h4 id="fixTitle">Action Steps For Your Phone:</h4>
+        <ol id="fixList">
+          <!-- Populated by JS -->
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function optimizeDevice() {
+      const ram = parseInt(document.getElementById('ram').value);
+      const issue = document.getElementById('issue').value;
+
+      let gfx, fps;
+
+      if (ram <= 4) {
+        gfx = "SMOOTH";
+        fps = "HIGH FPS (Active)";
+      } else if (ram === 6) {
+        gfx = "STANDARD";
+        fps = "HIGH FPS";
+      } else {
+        gfx = "ULTRA";
+        fps = "HIGH / MAX";
+      }
+
+      document.getElementById('valGfx').innerText = gfx;
+      document.getElementById('valFps').innerText = fps;
+
+      const fixList = document.getElementById('fixList');
+      fixList.innerHTML = "";
+
+      if (ram <= 4) {
+        fixList.innerHTML += "<li><strong>In-Game Display:</strong> Graphics ko 'Smooth' rakhein lekin High FPS ko hamesha 'HIGH' rakhein taaki screen 60 FPS par chale.</li>";
+        fixList.innerHTML += "<li><strong>Delete Costume Pack:</strong> Download center me jakar faltu Maps aur Costume Skins delete karein taaki storage khali ho.</li>";
+        fixList.innerHTML += "<li><strong>Developer Options:</strong> 'Background process limit' ko <i>At most 2 processes</i> par set karein taaki game ke waqt RAM free rahe.</li>";
+        fixList.innerHTML += "<li><strong>Turn OFF 3-Finger Screenshot:</strong> Ye feature screen par touch drag delay paida karta hai, isko phone settings me band karein.</li>";
+      } else {
+        fixList.innerHTML += "<li><strong>Graphics:</strong> Standard ya Ultra par rakhein, Shadow ko 'OFF' rakhein (Shadows se GPU par load aata hai).</li>";
+        fixList.innerHTML += "<li><strong>Game Turbo / Game Space:</strong> Game mode me jakar Touch Sensitivity aur Touch Response Rate ko 100% par set karein.</li>";
+        fixList.innerHTML += "<li><strong>Screen Refresh Rate:</strong> Phone Settings > Display me jakar refresh rate ko 120Hz / High par lock karein.</li>";
+        fixList.innerHTML += "<li><strong>Clear Cache:</strong> Free Fire icon ko dabakar rakhein > App Info > Storage > Clear Cache karein (Data clear mat karna).</li>";
+      }
+
+      document.getElementById('resBox').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
