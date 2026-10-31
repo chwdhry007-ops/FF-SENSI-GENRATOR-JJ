@@ -59,3 +59,117 @@
       <a href="sensi.html">Sensi</a>
       <a href="dpi.html">DPI</a>
       <a href="hud.html">HUD</a>
+    </div>
+    <span class="badge">Pro Tricks</span>
+  </div>
+
+  <div class="header">
+    <h1>HEADSHOT <span>SECRET TRICKS</span></h1>
+    <p>Zero Recoil • White Crosshair Rule • Pure Red Numbers</p>
+  </div>
+
+  <div class="card">
+    <label style="display:block; font-family:'Rajdhani', sans-serif; font-size:0.95rem; font-weight:700; color:#cbd5e1; margin-bottom:8px; text-transform:uppercase;">Select Gun Category:</label>
+    
+    <div class="gun-tabs">
+      <button class="gun-btn active" id="btnM1887" onclick="showGun('m1887')">M1887 (Shotgun)</button>
+      <button class="gun-btn" id="btnDeagle" onclick="showGun('deagle')">Desert Eagle</button>
+      <button class="gun-btn" id="btnWood" onclick="showGun('wood')">Woodpecker / DMR</button>
+      <button class="gun-btn" id="btnSmg" onclick="showGun('smg')">MP40 / UMP (SMG)</button>
+    </div>
+
+    <div class="motion-box">
+      <div class="motion-title">Recommended Drag Type</div>
+      <div class="motion-name" id="dragName">DOWN-UP "J" DRAG</div>
+      <div class="motion-badge" id="dragSpeed">Swipe Speed: Ultra Fast</div>
+    </div>
+
+    <div class="detail-card">
+      <h4 id="trickTitle">M1887 One-Tap Secret Formula:</h4>
+      <p id="trickDesc">Enemy close range me ho toh seedha upar drag karne se goli chest par lock hoti hai. Down-Up J-drag se aim chest friction tod kar seedha head par chadh jata hai.</p>
+      
+      <ol class="steps-list" id="trickSteps">
+        <li><strong>Crosshair Position:</strong> Aim ko enemy ke left ya right side me rakho taaki crosshair WHITE rahe.</li>
+        <li><strong>Fire Button Action:</strong> Button ko pehle halka sa neeche dabao aur fir instantly upar swipe kar do (J-Shape).</li>
+        <li><strong>Quick Weapon Switch:</strong> Jaise hi pehli goli fire ho, turant Weapon Switch dabao taaki recoil na bane.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="golden-rule">
+    <h3>🔥 The #1 Golden Rule: White Crosshair</h3>
+    <p>Free Fire ka default auto-aim hamesha chest par chipakta hai. Agar crosshair pehle se RED ho aur fir aap drag karoge, toh aim chest se kabhi nahi chhutega!</p>
+    <p style="margin-top:8px;"><strong>Pro Secret:</strong> Crosshair ko enemy ke pairon ke paas ya thoda door rakhein (aim <strong>WHITE</strong> hona chahiye). Jab white aim ke sath drag karoge, toh game ka aim-assist bullet ko seedha enemy ke head par snap karta hai.</p>
+  </div>
+
+  <script>
+    const gunData = {
+      m1887: {
+        drag: 'DOWN-UP "J" DRAG',
+        speed: 'Swipe Speed: Ultra Fast',
+        title: 'M1887 One-Tap Secret Formula:',
+        desc: 'Enemy close range me ho toh seedha upar drag karne se goli chest par lock hoti hai. Down-Up J-drag se aim chest friction tod kar seedha head par chadh jata hai.',
+        steps: [
+          '<strong>Crosshair Position:</strong> Aim ko enemy ke left ya right side me rakho taaki crosshair WHITE rahe.',
+          '<strong>Fire Button Action:</strong> Button ko pehle halka sa neeche dabao aur fir instantly upar swipe kar do (J-Shape).',
+          '<strong>Quick Weapon Switch:</strong> Jaise hi pehli goli fire ho, turant Weapon Switch dabao taaki recoil na bane.'
+        ]
+      },
+      deagle: {
+        drag: 'STRAIGHT SNAP DRAG',
+        speed: 'Swipe Speed: Fast & Light',
+        title: 'Desert Eagle CS Rank Trick:',
+        desc: 'Desert Eagle me sabse badi galti hoti hai zyada zor se swipe karna, jisse goli asmaan me chali jati hai.',
+        steps: [
+          '<strong>Character Still:</strong> Fire karte waqt Joystick ko chhod do (banda 0.5 second ke liye rukna chahiye).',
+          '<strong>Placement:</strong> White Crosshair ko enemy ke sir ke barabar unchai par hawa me rakhein.',
+          '<strong>Light Drag:</strong> Fire button ko halka sa click karke seedha upar snap karein — instant Red number.'
+        ]
+      },
+      wood: {
+        drag: 'SLOW LINEAR DRAG',
+        speed: 'Swipe Speed: Medium & Smooth',
+        title: 'Woodpecker & Marksman Trick:',
+        desc: 'Marksman rifles me High Damage aur High Recoil hota hai. Fast drag karne se recoil circle bada ho jata hai.',
+        steps: [
+          '<strong>Aim Lock:</strong> Crosshair ko enemy ke neck (gale) ke paas aane dein.',
+          '<strong>Smooth Drag:</strong> Fire button ko dheere-dheere smooth tarike se upar slide karein.',
+          '<strong>Single Tap:</strong> Ek baar me sirf 1 bullet fire karein aur turant cover ya crouch karein.'
+        ]
+      },
+      smg: {
+        drag: 'ROTATION DRAG (UMP/MP40)',
+        speed: 'Swipe Speed: Continuous Control',
+        title: 'SMG Continuous Spray Trick:',
+        desc: 'Enemy bhag raha ho toh straight drag fail ho jata hai. Iske liye Rotation Drag zaroori hai.',
+        steps: [
+          '<strong>Track Enemy:</strong> Enemy jis disha me daud raha hai, us taraf fire button ko rotate karte hue drag karein.',
+          '<strong>First 3 Bullets:</strong> SMG ki shuruati 3 goliyan sabse accurate hoti hain, isliye pehli goli se hi drag start karein.',
+          '<strong>Reset Recoil:</strong> Agar goli bikharne lage, toh fire chhod kar Sit-Up (crouch) karein aur fir se fire karein.'
+        ]
+      }
+    };
+
+    function showGun(gunKey) {
+      document.querySelectorAll('.gun-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtnId = 'btn' + gunKey.charAt(0).toUpperCase() + gunKey.slice(1);
+      const activeBtn = document.getElementById(activeBtnId);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const data = gunData[gunKey];
+      document.getElementById('dragName').innerText = data.drag;
+      document.getElementById('dragSpeed').innerText = data.speed;
+      document.getElementById('trickTitle').innerText = data.title;
+      document.getElementById('trickDesc').innerText = data.desc;
+
+      const stepsList = document.getElementById('trickSteps');
+      stepsList.innerHTML = "";
+      data.steps.forEach(step => {
+        const li = document.createElement('li');
+        li.innerHTML = step;
+        stepsList.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>
