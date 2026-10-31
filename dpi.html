@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Safe DPI & Touch Latency Engine | Headshot DPI</title>
+  <title>Safe DPI & Pointer Speed Engine | Free Fire</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -17,59 +17,193 @@
       --text: #f8fafc;
       --muted: #94a3b8;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
     body { background-color: var(--bg); color: var(--text); padding: 15px 10px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
-
-    /* Top Nav */
     .top-bar { width: 100%; max-width: 500px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
     .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 600; margin-right: 12px; }
     .nav-links a:hover { color: var(--cyan); }
-    .badge { background: rgba(0, 240, 255, 0.15); border: 1px solid var(--cyan); color: var(--cyan); padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-
+    .badge { background: rgba(0, 240, 255, 0.15); border: 1px solid var(--cyan); color: var(--cyan); padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
     .header { text-align: center; margin-bottom: 20px; width: 100%; max-width: 500px; }
-    .header h1 { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; color: #fff; }
+    .header h1 { font-family: 'Orbitron', sans-serif; font-size: 1.7rem; font-weight: 900; text-transform: uppercase; color: #fff; }
     .header h1 span { color: var(--cyan); }
-    .header p { color: var(--muted); font-size: 0.85rem; margin-top: 5px; }
-
-    /* Form Card */
+    .header p { color: var(--muted); font-size: 0.82rem; margin-top: 5px; }
     .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; width: 100%; max-width: 500px; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
-
     .input-group { margin-bottom: 14px; }
     label { display: block; font-family: 'Rajdhani', sans-serif; font-size: 0.95rem; font-weight: 700; color: #cbd5e1; margin-bottom: 6px; text-transform: uppercase; }
-
-    input[type="text"], select {
-      width: 100%; padding: 12px 14px; background: #07090e; border: 1px solid var(--border); border-radius: 8px; color: #fff; font-size: 0.95rem; outline: none; transition: 0.2s border;
-    }
+    input[type="text"], select { width: 100%; padding: 12px 14px; background: #07090e; border: 1px solid var(--border); border-radius: 8px; color: #fff; font-size: 0.95rem; outline: none; }
     input[type="text"]:focus, select:focus { border-color: var(--cyan); }
-
     .row { display: flex; gap: 10px; }
     .col { flex: 1; }
-
-    .btn-calc {
-      width: 100%; padding: 14px; background: linear-gradient(135deg, var(--cyan), #0077b6); border: none; border-radius: 8px; color: #07090e; font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; margin-top: 10px; box-shadow: 0 4px 25px rgba(0, 240, 255, 0.4);
-    }
+    .btn-calc { width: 100%; padding: 14px; background: linear-gradient(135deg, var(--cyan), #0077b6); border: none; border-radius: 8px; color: #07090e; font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 900; text-transform: uppercase; cursor: pointer; margin-top: 10px; }
     .btn-calc:active { transform: scale(0.98); }
-
-    /* Results */
     .results { display: none; margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px; }
-    .res-title { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; color: #fff; text-transform: uppercase; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
-
-    .dpi-display {
-      background: #07090e; border: 2px solid var(--cyan); border-radius: 12px; padding: 18px; text-align: center; margin-bottom: 15px; box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
-    }
+    .dpi-display { background: #07090e; border: 2px solid var(--cyan); border-radius: 12px; padding: 16px; text-align: center; margin-bottom: 15px; }
     .dpi-display .label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; font-weight: 700; }
-    .dpi-display .value { font-family: 'Orbitron', sans-serif; font-size: 2.5rem; font-weight: 900; color: var(--cyan); margin: 6px 0; }
+    .dpi-display .value { font-family: 'Orbitron', sans-serif; font-size: 2.4rem; font-weight: 900; color: var(--cyan); margin: 6px 0; }
     .dpi-display .sub { font-size: 0.75rem; color: var(--green); font-weight: 600; }
-
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
     .grid-box { background: #07090e; border: 1px solid var(--border); border-radius: 8px; padding: 12px; text-align: center; }
-    .grid-box span { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; font-weight: 700; }
-    .grid-box .num { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; font-weight: 800; margin-top: 4px; }
-
-    .warning-box {
-      background: rgba(255, 34, 82, 0.08); border-left: 3px solid var(--red); padding: 12px; border-radius: 6px; margin-bottom: 15px; font-size: 0.8rem; line-height: 1.45;
-    }
+    .grid-box span { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; font-weight: 700; }
+    .grid-box .num { font-family: 'Orbitron', sans-serif; font-size: 1.15rem; font-weight: 800; margin-top: 4px; }
+    .warning-box { background: rgba(255, 34, 82, 0.08); border-left: 3px solid var(--red); padding: 12px; border-radius: 6px; margin-bottom: 15px; font-size: 0.8rem; line-height: 1.45; }
     .warning-box strong { color: var(--red); }
+    .guide-box { background: #07090e; border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
+    .guide-box h4 { font-family: 'Rajdhani', sans-serif; font-size: 0.95rem; color: var(--yellow); text-transform: uppercase; margin-bottom: 8px; }
+    .guide-box ol { padding-left: 18px; font-size: 0.82rem; color: #cbd5e1; line-height: 1.5; }
+  </style>
+</head>
+<body>
 
-    .g
+  <div class="top-bar">
+    <div class="nav-links">
+      <a href="index.html">← Hub</a>
+      <a href="sensi.html">Sensi</a>
+    </div>
+    <span class="badge">Safe DPI Engine</span>
+  </div>
+
+  <div class="header">
+    <h1>PERFECT <span>DPI & TOUCH</span> ENGINE</h1>
+    <p>Zero Black Screen • Zero Phone Hang • 100% Drag Speed</p>
+  </div>
+
+  <div class="card">
+    <div class="input-group">
+      <label>Device Name (Keyboard se Type Karo):</label>
+      <input type="text" id="phoneName" placeholder="e.g. Realme P4x, Poco M6, Vivo T2x..." autocomplete="off">
+    </div>
+
+    <div class="row">
+      <div class="col input-group">
+        <label>Phone Brand:</label>
+        <select id="brand">
+          <option value="realme">Realme</option>
+          <option value="redmi">Redmi / Poco / Xiaomi</option>
+          <option value="vivo">Vivo / iQOO</option>
+          <option value="samsung">Samsung</option>
+          <option value="oneplus">OnePlus</option>
+          <option value="other">Other Android</option>
+        </select>
+      </div>
+      <div class="col input-group">
+        <label>Device RAM:</label>
+        <select id="ram">
+          <option value="3">3 GB RAM</option>
+          <option value="4">4 GB RAM</option>
+          <option value="6" selected>6 GB RAM</option>
+          <option value="8">8 GB RAM</option>
+          <option value="12">12 GB+ RAM</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn-calc" onclick="calculateDpi()">Calculate Safe DPI ⚡</button>
+
+    <div class="results" id="resBox">
+      <div class="dpi-display">
+        <div class="label">Recommended "Smallest Width" (DPI)</div>
+        <div class="value" id="valDpi">--</div>
+        <div class="sub">✓ Tested & 100% Safe For Your Screen</div>
+      </div>
+
+      <div class="grid-2">
+        <div class="grid-box">
+          <span>Danger Limit (Mat Daalna)</span>
+          <div class="num" style="color:var(--red);" id="valDanger">--</div>
+        </div>
+        <div class="grid-box">
+          <span>Pointer Speed Slider</span>
+          <div class="num" style="color:var(--yellow);" id="valPointer">--</div>
+        </div>
+      </div>
+
+      <div class="warning-box">
+        <strong>⚠️ Warning:</strong> Apne phone me kabhi bhi <span id="alertDanger" style="font-weight:700;">--</span> se upar DPI mat dalna, varna phone automatic restart ya black screen ho sakta hai.
+      </div>
+
+      <div class="guide-box">
+        <h4>Developer Options Me DPI Kaise Badhayein:</h4>
+        <ol id="guideSteps">
+          <!-- Populated by JS -->
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const stepsData = {
+      realme: [
+        "Settings > About Device > Version me jao.",
+        "'Build Number' par 7 baar tap karke Developer mode on karo.",
+        "Settings > Additional Settings > Developer Options me jao.",
+        "'Smallest Width' option me recommended value daal kar OK karo."
+      ],
+      redmi: [
+        "Settings > About Phone me jao.",
+        "'MIUI / HyperOS Version' par 7 baar tap karo.",
+        "Settings > Additional Settings > Developer Options me jao.",
+        "'Smallest Width' me recommended value set karo."
+      ],
+      vivo: [
+        "Settings > About Phone > Software Info me jao.",
+        "'Build Number' par 7 baar tap karo.",
+        "Settings > System > Developer Options me jao.",
+        "'Smallest Width' me safe value enter karo."
+      ],
+      samsung: [
+        "Settings > About Phone > Software Information me jao.",
+        "'Build Number' par 7 baar tap karo.",
+        "Settings > Developer Options > Minimum Width me jao aur set karo."
+      ],
+      oneplus: [
+        "Settings > About Device > Version me 'Build Number' par 7 baar tap karo.",
+        "Settings > Additional / System Settings > Developer Options me 'Smallest Width' change karo."
+      ],
+      other: [
+        "Settings > About Phone me jakar 'Build Number' par 7 baar tap karo.",
+        "Settings > System / Developer Options me 'Smallest Width' update karo."
+      ]
+    };
+
+    function calculateDpi() {
+      const ram = parseInt(document.getElementById('ram').value);
+      const brand = document.getElementById('brand').value;
+
+      let safeDpi, dangerLimit, pointerSpeed;
+
+      if (ram <= 3) {
+        safeDpi = "390 - 410";
+        dangerLimit = "450+";
+        pointerSpeed = "80% (High)";
+      } else if (ram === 4) {
+        safeDpi = "420 - 440";
+        dangerLimit = "490+";
+        pointerSpeed = "90% (Fast)";
+      } else if (ram <= 8) {
+        safeDpi = "460 - 490";
+        dangerLimit = "560+";
+        pointerSpeed = "100% (Max)";
+      } else {
+        safeDpi = "510 - 540";
+        dangerLimit = "620+";
+        pointerSpeed = "100% (Max)";
+      }
+
+      document.getElementById('valDpi').innerText = safeDpi;
+      document.getElementById('valDanger').innerText = dangerLimit;
+      document.getElementById('alertDanger').innerText = dangerLimit;
+      document.getElementById('valPointer').innerText = pointerSpeed;
+
+      const stepsList = document.getElementById('guideSteps');
+      stepsList.innerHTML = "";
+      stepsData[brand].forEach(step => {
+        const li = document.createElement('li');
+        li.innerText = step;
+        stepsList.appendChild(li);
+      });
+
+      document.getElementById('resBox').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
