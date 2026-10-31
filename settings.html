@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret Developer Options & In-Game Config | Free Fire</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07090e;
+      --card: #10141f;
+      --border: #1e2638;
+      --red: #ff2252;
+      --cyan: #00f0ff;
+      --yellow: #ffb703;
+      --green: #00e676;
+      --purple: #a855f7;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    body { background-color: var(--bg); color: var(--text); padding: 15px 10px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+    .top-bar { width: 100%; max-width: 500px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 600; margin-right: 10px; }
+    .nav-links a:hover { color: var(--purple); }
+    .badge { background: rgba(168, 85, 247, 0.15); border: 1px solid var(--purple); color: var(--purple); padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+    .header { text-align: center; margin-bottom: 20px; width: 100%; max-width: 500px; }
+    .header h1 { font-family: 'Orbitron', sans-serif; font-size: 1.7rem; font-weight: 900; text-transform: uppercase; color: #fff; }
+    .header h1 span { color: var(--purple); }
+    .header p { color: var(--muted); font-size: 0.82rem; margin-top: 5px; }
+
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; width: 100%; max-width: 500px; box-shadow: 0 10px 40px rgba(0,0,0,0.6); margin-bottom: 15px; }
+
+    .setting-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .setting-info { max-width: 70%; }
+    .setting-name { font-family: 'Rajdhani', sans-serif; font-size: 0.95rem; font-weight: 700; color: #fff; text-transform: uppercase; }
+    .setting-desc { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+    .setting-tag { font-family: 'Orbitron', sans-serif; font-size: 0.85rem; font-weight: 800; padding: 6px 10px; border-radius: 6px; text-transform: uppercase; }
+
+    .tag-cyan { background: rgba(0, 240, 255, 0.1); color: var(--cyan); border: 1px solid var(--cyan); }
+    .tag-green { background: rgba(0, 230, 118, 0.1); color: var(--green); border: 1px solid var(--green); }
+    .tag-yellow { background: rgba(255, 183, 3, 0.1); color: var(--yellow); border: 1px solid var(--yellow); }
+    .tag-purple { background: rgba(168, 85, 247, 0.1); color: var(--purple); border: 1px solid var(--purple); }
+
+    .section-title { font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--yellow); text-transform: uppercase; margin-bottom: 12px; margin-top: 6px; }
+
+    .tip-box { background: rgba(168, 85, 247, 0.08); border-left: 3px solid var(--purple); padding: 12px; border-radius: 6px; margin-top: 15px; font-size: 0.82rem; line-height: 1.45; }
+    .tip-box strong { color: var(--purple); }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="nav-links">
+      <a href="index.html">← Hub</a>
+      <a href="sensi.html">Sensi</a>
+      <a href="dpi.html">DPI</a>
+      <a href="lagfix.html">Lag Fix</a>
+    </div>
+    <span class="badge">Secret Config</span>
+  </div>
+
+  <div class="header">
+    <h1>SECRET <span>PHONE & IN-GAME</span> CONFIG</h1>
+    <p>Developer Tweaks • Zero Touch Delay • Enemy Spotting Filters</p>
+  </div>
+
+  <!-- Developer Settings Card -->
+  <div class="card">
+    <div class="section-title">⚡ Developer Options Tweaks</div>
+
+    <div class="setting-item">
+      <div class="setting-info">
+        <div class="setting-name">Window Animation Scale</div>
+        <div class="setting-desc">Phone screen UI ki animation speed</div>
+      </div>
+      <div class="setting-tag tag-cyan">0.5x / OFF</div>
+    </div>
+
+    <div class="setting-item">
+      <div class="setting-info">
+        <div class="setting-name">Transition Animation Scale</div>
+        <div class="setting-desc">Apps switch hone ki speed</div>
+      </div>
+      <div class="setting-tag tag-cyan">0.5x / OFF</div>
+    </div>
+
+    <div class="setting-item">
+      <div class="setting-info">
+        <div class="setting-name">Animator Duration Scale</div>
+        <div class="setting-desc">Touch react karne ka latency delay</div>
+      </div>
+      <div class="setting-tag tag-cyan">0.5x / OFF</div>
+    </div>
+
+    <div class="setting-item">
+      <div class="setting-info">
+        <div class="setting-name">Disable HW Overlays</div>
+        <div class="setting-desc">Screen rendering ke liye GPU force karein</div>
+      </div>
+      <div class="setting-tag tag-green">ALWAYS ON</div>
+    </div>
+
+    <div class="setting-item" style="border-bottom:none;">
+      <div class="setting-info">
+        <div class="setting-name">Touch & Hold Delay</div>
+        <div class="setting-desc">Settings > Accessibility me milega</div>
+      </div>
+      <div class="setting-tag tag-yellow">SHORT (VERY FAST)</div>
+    </div>
+  </div>
+
+  <!-- In-Game Settings Card -->
+  <div class="card">
+    <div class="section-title">🎮 Best In-Game Display Config</div>
+
+    <div class="setting-item">
+      <div class="setting-info">
+        <div class="setting-name">Display Filter</div>
+        <div class="setting-desc">Enemy door se chamakta hua dikhega</div>
+      </div>
+      <div class="setting-tag tag-purple">VIVID / BRIGHT</div>
+    </div>
+
+    <div class="setting-item">
+      <div class="setting-info">
+        <div class="setting-name">High FPS Mode</div>
+        <div class="setting-desc">Smooth drag ke liye sabse zaroori</div>
+      </div>
+      <div class="setting-tag tag-green">HIGH (MUST)</div>
+    </div>
+
+    <div class="setting-item">
+      <div class="setting-info">
+        <div class="setting-name">Auto Pickup Speed</div>
+        <div class="setting-desc">Loot karte waqt lag nahi aayega</div>
+      </div>
+      <div class="setting-tag tag-yellow">FAST</div>
+    </div>
+
+    <div class="setting-item" style="border-bottom:none;">
+      <div class="setting-info">
+        <div class="setting-name">Sound Audio Balance</div>
+        <div class="setting-desc">Enemy ke footsteps ka clear direction</div>
+      </div>
+      <div class="setting-tag tag-cyan">FX: 100 | MUSIC: 0</div>
+    </div>
+
+    <div class="tip-box">
+      <strong>Pro Tip:</strong> Free Fire ke Display settings me <i>Shadow</i> ko hamesha <strong>OFF</strong> rakhein. Shadow on rakhne se processor par bina baat ka load aata hai jisse close-range me frame drop hota hai!
+    </div>
+  </div>
+
+</body>
+</html>
