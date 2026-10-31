@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OZ Sensi Pro | Complete Free Fire Headshot & DPI Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07090e;
+      --card: #10141f;
+      --border: #1e2638;
+      --red: #ff2252;
+      --cyan: #00f0ff;
+      --yellow: #ffb703;
+      --green: #00e676;
+      --purple: #a855f7;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 20px 12px 40px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-image: radial-gradient(circle at 50% 0%, rgba(255, 34, 82, 0.12) 0%, transparent 60%);
+    }
+
+    /* Top Live Badge */
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 34, 82, 0.12);
+      border: 1px solid var(--red);
+      color: var(--red);
+      padding: 5px 14px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      background-color: var(--red);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--red);
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 25px;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.1rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      line-height: 1.15;
+    }
+
+    .header h1 span {
+      background: linear-gradient(135deg, #fff, var(--red));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header p {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-top: 6px;
+    }
+
+    /* Portal Grid */
+    .portal-container {
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .tool-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tool-card:active {
+      transform: scale(0.98);
+    }
+
+    .tool-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+    }
+
+    /* Accent Borders */
+    .card-sensi::before { background: var(--red); box-shadow: 0 0 10px var(--red); }
+    .card-dpi::before { background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+    .card-hud::before { background: var(--yellow); box-shadow: 0 0 10px var(--yellow); }
+    .card-tricks::before { background: var(--red); box-shadow: 0 0 10px var(--red); }
+    .card-lag::before { background: var(--green); box-shadow: 0 0 10px var(--green); }
+    .card-config::before { background: var(--purple); box-shadow: 0 0 10px var(--purple); }
+
+    .tool-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .tool-icon {
+      width: 44px;
+      height: 44px;
+      background: #07090e;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .tool-info h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tool-info p {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .tool-arrow {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      color: var(--muted);
+      transition: transform 0.2s ease;
+    }
+
+    .tool-card:hover .tool-arrow {
+      color: #fff;
+      transform: translateX(4px);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .footer strong {
+      color: #cbd5e1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero-badge">
+    <div class="pulse-dot"></div>
+    OB Patch Tested & Safe
+  </div>
+
+  <div class="header">
+    <h1>OZ SENSI <span>PRO HUB</span></h1>
+    <p>All-in-One Engine for Pure Red Numbers & Zero Lag</p>
+  </div>
+
+  <div class="portal-container">
+
+    <!-- 1. Sensi Engine -->
+    <a href="sensi.html" class="tool-card card-sensi">
+      <div class="tool-left">
+        <div class="tool-icon">🎯</div>
+        <div class="tool-info">
+          <h3>Auto Headshot Sensi</h3>
+          <p>Body-to-Head Lock • 3GB to 16GB Support</p>
+        </div>
+      </div>
+      <div class="tool-arrow">→</div>
+    </a>
+
+    <!-- 2. Safe DPI Engine -->
+    <a href="dpi.html" class="tool-card card-dpi">
+      <div class="tool-left">
+        <div class="tool-icon">⚡</div>
+        <div class="tool-info">
+          <h3>Safe DPI Calculator</h3>
+          <p>Zero Black Screen • Safe Width by RAM</p>
+        </div>
+      </div>
+      <div class="tool-arrow">→</div>
+    </a>
+
+    <!-- 3. Pro HUD Setup -->
+    <a href="hud.html" class="tool-card card-hud">
+      <div class="tool-left">
+        <div class="tool-icon">🎮</div>
+        <div class="tool-info">
+          <h3>Custom HUD & Fire Button</h3>
+          <p>2, 3, 4 Finger Layouts • Button Size Formula</p>
+        </div>
+      </div>
+      <div class="tool-arrow">→</div>
+    </a>
+
+    <!-- 4. One-Tap Tricks -->
+    <a href="tricks.html" class="tool-card card-tricks">
+      <div class="tool-left">
+        <div class="tool-icon">🔥</div>
+        <div class="tool-info">
+          <h3>Drag & One-Tap Tricks</h3>
+          <p>M1887 J-Drag • Deagle • White Crosshair Rule</p>
+        </div>
+      </div>
+      <div class="tool-arrow">→</div>
+    </a>
+
+    <!-- 5. Lag Fix & FPS -->
+    <a href="lagfix.html" class="tool-card card-lag">
+      <div class="tool-left">
+        <div class="tool-icon">🚀</div>
+        <div class="tool-info">
+          <h3>FPS Booster & Lag Fix</h3>
+          <p>RAM Plus Off • Fix Touch Delay • 90 FPS</p>
+        </div>
+      </div>
+      <div class="tool-arrow">→</div>
+    </a>
+
+    <!-- 6. Secret Config -->
+    <a href="settings.html" class="tool-card card-config">
+      <div class="tool-left">
+        <div class="tool-icon">⚙️</div>
+        <div class="tool-info">
+          <h3>Secret Phone & In-Game Config</h3>
+          <p>Animation Scales • Vivid Filter • HW Overlays</p>
+        </div>
+      </div>
+      <div class="tool-arrow">→</div>
+    </a>
+
+  </div>
+
+  <div class="footer">
+    <p>Designed for <strong>Free Fire & MAX</strong> Community</p>
+    <p style="margin-top:4px;">100% Anti-Ban • Safe Engine Settings</p>
+  </div>
+
+</body>
+</html>
