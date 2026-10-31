@@ -18,86 +18,321 @@
       --muted: #94a3b8;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-    body { background-color: var(--bg); color: var(--text); padding: 15px 10px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
-
-    /* Top Nav */
-    .top-bar { width: 100%; max-width: 500px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-    .home-link { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
-    .badge { background: rgba(255, 34, 82, 0.15); border: 1px solid var(--red); color: var(--red); padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-
-    .header { text-align: center; margin-bottom: 20px; width: 100%; max-width: 500px; }
-    .header h1 { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; color: #fff; text-shadow: 0 0 20px rgba(255,34,82,0.4); }
-    .header h1 span { color: var(--red); }
-    .header p { color: var(--muted); font-size: 0.85rem; margin-top: 5px; }
-
-    /* Main Form Card */
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; width: 100%; max-width: 500px; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
-
-    .input-group { margin-bottom: 14px; }
-    label { display: block; font-family: 'Rajdhani', sans-serif; font-size: 0.95rem; font-weight: 700; color: #cbd5e1; margin-bottom: 6px; text-transform: uppercase; }
-
-    input[type="text"], select {
-      width: 100%; padding: 12px 14px; background: #07090e; border: 1px solid var(--border); border-radius: 8px; color: #fff; font-size: 0.95rem; outline: none; transition: 0.2s border;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
     }
-    input[type="text"]:focus, select:focus { border-color: var(--red); }
 
-    .row { display: flex; gap: 10px; }
-    .col { flex: 1; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 15px 10px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-    /* Drag Style Toggle */
-    .toggle-container { display: flex; gap: 8px; margin-top: 6px; }
-    .toggle-btn { flex: 1; padding: 10px 6px; background: #07090e; border: 1px solid var(--border); border-radius: 8px; color: var(--muted); font-family: 'Rajdhani', sans-serif; font-size: 0.9rem; font-weight: 700; cursor: pointer; text-align: center; transition: 0.2s; }
-    .toggle-btn.active { background: rgba(255, 34, 82, 0.2); border-color: var(--red); color: #fff; box-shadow: 0 0 10px rgba(255,34,82,0.3); }
+    .top-bar {
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .home-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .badge {
+      background: rgba(255, 34, 82, 0.15);
+      border: 1px solid var(--red);
+      color: var(--red);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #fff;
+      text-shadow: 0 0 20px rgba(255,34,82,0.4);
+    }
+
+    .header h1 span {
+      color: var(--red);
+    }
+
+    .header p {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-top: 5px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    }
+
+    .input-group {
+      margin-bottom: 14px;
+    }
+
+    label {
+      display: block;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #cbd5e1;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 12px 14px;
+      background: #07090e;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+      transition: 0.2s border;
+    }
+
+    input[type="text"]:focus,
+    select:focus {
+      border-color: var(--red);
+    }
+
+    .row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .col {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .toggle-container {
+      display: flex;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .toggle-btn {
+      flex: 1;
+      padding: 10px 6px;
+      background: #07090e;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--muted);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      transition: 0.2s;
+    }
+
+    .toggle-btn.active {
+      background: rgba(255, 34, 82, 0.2);
+      border-color: var(--red);
+      color: #fff;
+      box-shadow: 0 0 10px rgba(255,34,82,0.3);
+    }
 
     .btn-calc {
-      width: 100%; padding: 14px; background: linear-gradient(135deg, var(--red), #ff6b3d); border: none; border-radius: 8px; color: #fff; font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; margin-top: 10px; box-shadow: 0 4px 25px rgba(255, 34, 82, 0.4);
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--red), #ff6b3d);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      margin-top: 10px;
+      box-shadow: 0 4px 25px rgba(255, 34, 82, 0.4);
     }
-    .btn-calc:active { transform: scale(0.98); }
 
-    /* Results */
-    .results { display: none; margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px; }
-    .res-title { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; color: var(--cyan); text-transform: uppercase; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
+    .btn-calc:active {
+      transform: scale(0.98);
+    }
 
-    .stat-bar { margin-bottom: 12px; }
-    .stat-meta { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 4px; }
-    .stat-name { color: var(--muted); font-weight: 600; }
-    .stat-val { font-family: 'Orbitron', sans-serif; font-weight: 700; color: #fff; }
-    .bar-bg { height: 6px; background: #07090e; border-radius: 10px; overflow: hidden; }
-    .bar-fill { height: 100%; background: linear-gradient(90deg, var(--cyan), var(--red)); border-radius: 10px; width: 0%; transition: width 0.5s ease; }
+    .results {
+      display: none;
+      margin-top: 25px;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
 
-    /* Grid for Button & DPI */
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
-    .grid-box { background: #07090e; border: 1px solid var(--border); border-radius: 8px; padding: 12px; text-align: center; }
-    .grid-box span { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; font-weight: 700; }
-    .grid-box .num { font-family: 'Orbitron', sans-serif; font-size: 1.25rem; font-weight: 900; margin-top: 4px; }
+    .res-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      color: var(--cyan);
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      overflow-wrap: anywhere;
+    }
 
-    /* Secret Drag Formula Box */
-    .trick-box { background: rgba(0, 240, 255, 0.05); border-left: 3px solid var(--cyan); padding: 12px; border-radius: 6px; margin-top: 16px; font-size: 0.82rem; line-height: 1.45; }
-    .trick-box strong { color: var(--cyan); }
+    .stat-bar {
+      margin-bottom: 12px;
+    }
+
+    .stat-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+    }
+
+    .stat-name {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .stat-val {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .bar-bg {
+      height: 6px;
+      background: #07090e;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--cyan), var(--red));
+      border-radius: 10px;
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .grid-box {
+      background: #07090e;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .grid-box span {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .grid-box .num {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 900;
+      margin-top: 4px;
+    }
+
+    .trick-box {
+      background: rgba(0, 240, 255, 0.05);
+      border-left: 3px solid var(--cyan);
+      padding: 12px;
+      border-radius: 6px;
+      margin-top: 16px;
+      font-size: 0.82rem;
+      line-height: 1.45;
+    }
+
+    .trick-box strong {
+      color: var(--cyan);
+    }
+
+    @media (max-width: 360px) {
+      .header h1 {
+        font-size: 1.4rem;
+      }
+
+      .card {
+        padding: 14px;
+      }
+
+      .toggle-btn {
+        font-size: 0.8rem;
+      }
+    }
   </style>
 </head>
-<body>
 
+<body>
   <div class="top-bar">
     <a href="index.html" class="home-link">← Hub Portal</a>
-    <span class="badge">Body-To-Head Lock Engine</span>
+    <span class="badge">Sensi Engine</span>
   </div>
 
   <div class="header">
     <h1>PERFECT <span>HEADSHOT</span> SENSI</h1>
-    <p>Aim body par ho toh bhi lock seedha head par chadhane ka formula</p>
+    <p>Device ke hisaab se sensitivity settings generate karein.</p>
   </div>
 
   <div class="card">
     <div class="input-group">
-      <label>Device Name (Keyboard se Type Karo):</label>
-      <input type="text" id="phoneName" placeholder="e.g. Realme P4x, Redmi Note 13, Vivo Y21..." autocomplete="off">
+      <label for="phoneName">Device Name:</label>
+      <input
+        type="text"
+        id="phoneName"
+        placeholder="e.g. Realme P4x, Redmi Note 13..."
+        autocomplete="off"
+      >
     </div>
 
     <div class="row">
       <div class="col input-group">
-        <label>Device RAM:</label>
+        <label for="ram">Device RAM:</label>
         <select id="ram">
           <option value="3">3 GB RAM</option>
           <option value="4">4 GB RAM</option>
@@ -107,13 +342,14 @@
           <option value="16">16 GB RAM</option>
         </select>
       </div>
+
       <div class="col input-group">
-        <label>Display Hz:</label>
+        <label for="hz">Display Hz:</label>
         <select id="hz">
           <option value="60">60 Hz Screen</option>
           <option value="90">90 Hz Screen</option>
           <option value="120" selected>120 Hz Screen</option>
-          <option value="144">144 Hz (Gaming)</option>
+          <option value="144">144 Hz Screen</option>
         </select>
       </div>
     </div>
@@ -121,50 +357,84 @@
     <div class="input-group">
       <label>Drag Sensitivity Mode:</label>
       <div class="toggle-container">
-        <button type="button" class="toggle-btn" id="modeLow" onclick="setMode('low')">Low / Balanced<br><small style="font-size:0.7rem; font-weight:normal;">(Zero Recoil)</small></button>
-        <button type="button" class="toggle-btn active" id="modeHigh" onclick="setMode('high')">100+ Max Drag<br><small style="font-size:0.7rem; font-weight:normal;">(Ultra Fast Head)</small></button>
+        <button
+          type="button"
+          class="toggle-btn"
+          id="modeLow"
+          onclick="setMode('low')"
+        >
+          Low / Balanced<br>
+          <small style="font-size:0.7rem;font-weight:normal;">Balanced</small>
+        </button>
+
+        <button
+          type="button"
+          class="toggle-btn active"
+          id="modeHigh"
+          onclick="setMode('high')"
+        >
+          100–200 High<br>
+          <small style="font-size:0.7rem;font-weight:normal;">Fast Drag</small>
+        </button>
       </div>
     </div>
 
-    <button class="btn-calc" onclick="calculateLockSensi()">Generate Lock Sensi ⚡</button>
+    <button type="button" class="btn-calc" onclick="calculateLockSensi()">
+      Generate Sensi ⚡
+    </button>
 
-    <!-- Results Box -->
     <div class="results" id="resBox">
       <div class="res-title">
         <span id="targetDevice">Device Settings</span>
-        <span style="font-size:0.75rem; color:var(--green);">● Calibrated</span>
+        <span style="font-size:0.75rem;color:var(--green);">● Generated</span>
       </div>
 
       <div class="stat-bar">
-        <div class="stat-meta"><span class="stat-name">General (Body-to-Head Speed)</span><span class="stat-val" id="valGen">--</span></div>
+        <div class="stat-meta">
+          <span class="stat-name">General</span>
+          <span class="stat-val" id="valGen">--</span>
+        </div>
         <div class="bar-bg"><div class="bar-fill" id="barGen"></div></div>
       </div>
 
       <div class="stat-bar">
-        <div class="stat-meta"><span class="stat-name">Red Dot (Head Lock Precision)</span><span class="stat-val" id="valRed">--</span></div>
+        <div class="stat-meta">
+          <span class="stat-name">Red Dot</span>
+          <span class="stat-val" id="valRed">--</span>
+        </div>
         <div class="bar-bg"><div class="bar-fill" id="barRed"></div></div>
       </div>
 
       <div class="stat-bar">
-        <div class="stat-meta"><span class="stat-name">2X Scope</span><span class="stat-val" id="val2x">--</span></div>
+        <div class="stat-meta">
+          <span class="stat-name">2X Scope</span>
+          <span class="stat-val" id="val2x">--</span>
+        </div>
         <div class="bar-bg"><div class="bar-fill" id="bar2x"></div></div>
       </div>
 
       <div class="stat-bar">
-        <div class="stat-meta"><span class="stat-name">4X Scope</span><span class="stat-val" id="val4x">--</span></div>
+        <div class="stat-meta">
+          <span class="stat-name">4X Scope</span>
+          <span class="stat-val" id="val4x">--</span>
+        </div>
         <div class="bar-bg"><div class="bar-fill" id="bar4x"></div></div>
       </div>
 
       <div class="stat-bar">
-        <div class="stat-meta"><span class="stat-name">Sniper Scope</span><span class="stat-val" id="valSnip">--</span></div>
+        <div class="stat-meta">
+          <span class="stat-name">Sniper Scope</span>
+          <span class="stat-val" id="valSnip">--</span>
+        </div>
         <div class="bar-bg"><div class="bar-fill" id="barSnip"></div></div>
       </div>
 
       <div class="grid-2">
         <div class="grid-box">
-          <span>Safe DPI Value</span>
+          <span>DPI Suggestion</span>
           <div class="num" style="color:var(--yellow);" id="valDpi">--</div>
         </div>
+
         <div class="grid-box">
           <span>Fire Button Size</span>
           <div class="num" style="color:var(--green);" id="valFire">--</div>
@@ -172,103 +442,129 @@
       </div>
 
       <div class="trick-box">
-        <strong>Head Lock Drag Rule:</strong> Crosshair ko enemy ke chest par rakho. Fire button ko pehle halka sa neeche dabao aur fir tezi se straight upar (ya J-drag) swipe karo. Aim chest par nahi rukega, seedha head par chadh kar red numbers marega!
+        <strong>Tip:</strong>
+        Ye starting-point settings hain, guaranteed headshot ya zero recoil nahi.
+        Training Ground mein test karke zaroorat ke mutabik adjust karein.
       </div>
     </div>
   </div>
 
   <script>
-    let currentMode = 'high';
+    "use strict";
+
+    let currentMode = "high";
 
     function setMode(mode) {
+      if (mode !== "low" && mode !== "high") return;
+
       currentMode = mode;
-      document.getElementById('modeLow').classList.toggle('active', mode === 'low');
-      document.getElementById('modeHigh').classList.toggle('active', mode === 'high');
+
+      document.getElementById("modeLow")
+        .classList.toggle("active", mode === "low");
+
+      document.getElementById("modeHigh")
+        .classList.toggle("active", mode === "high");
     }
 
     function calculateLockSensi() {
-      const name = document.getElementById('phoneName').value.trim() || "Your Device";
-      const ram = parseInt(document.getElementById('ram').value);
-      const hz = parseInt(document.getElementById('hz').value);
+      const name =
+        document.getElementById("phoneName").value.trim() || "Your Device";
+
+      const ram = Number.parseInt(
+        document.getElementById("ram").value,
+        10
+      );
+
+      const hz = Number.parseInt(
+        document.getElementById("hz").value,
+        10
+      );
 
       let gen, red, s2, s4, snip, dpi, fire;
 
-      if (currentMode === 'high') {
-        // High Drag: 3GB-4GB needs General 100 to break chest friction
+      if (currentMode === "high") {
         if (ram <= 4) {
-          gen = 100;
-          red = 94; // 6 points gap allows aim to escape chest lock
-          s2 = 96;
-          s4 = 92;
-          snip = 55;
+          gen = 190;
+          red = 178;
+          s2 = 168;
+          s4 = 150;
+          snip = 90;
           dpi = hz >= 90 ? "420" : "400";
           fire = "48%";
         } else if (ram <= 8) {
-          gen = 98;
-          red = 91;
-          s2 = 88;
-          s4 = 84;
-          snip = 48;
+          gen = 185;
+          red = 172;
+          s2 = 160;
+          s4 = 145;
+          snip = 85;
           dpi = hz >= 120 ? "450" : "420";
           fire = "44%";
         } else {
-          // 12GB - 16GB: ultra fast touch, high gen causes sky recoil
-          gen = 95;
-          red = 86;
-          s2 = 82;
-          s4 = 78;
-          snip = 42;
+          gen = 180;
+          red = 165;
+          s2 = 150;
+          s4 = 135;
+          snip = 80;
           dpi = "480";
           fire = "40%";
         }
       } else {
-        // Low / Balanced Mode: zero recoil, tight aim assist
         if (ram <= 4) {
-          gen = 96;
-          red = 89;
-          s2 = 85;
-          s4 = 80;
-          snip = 45;
+          gen = 160;
+          red = 150;
+          s2 = 140;
+          s4 = 125;
+          snip = 75;
           dpi = "Phone Default";
           fire = "52%";
         } else if (ram <= 8) {
-          gen = 92;
-          red = 84;
-          s2 = 79;
-          s4 = 75;
-          snip = 40;
+          gen = 155;
+          red = 145;
+          s2 = 135;
+          s4 = 120;
+          snip = 70;
           dpi = "410";
           fire = "46%";
         } else {
-          gen = 88;
-          red = 78;
-          s2 = 74;
-          s4 = 70;
-          snip = 35;
+          gen = 150;
+          red = 140;
+          s2 = 130;
+          s4 = 115;
+          snip = 65;
           dpi = "440";
           fire = "42%";
         }
       }
 
-      // Display Values
-      document.getElementById('targetDevice').innerText = name.toUpperCase();
-      document.getElementById('valGen').innerText = gen;
-      document.getElementById('valRed').innerText = red;
-      document.getElementById('val2x').innerText = s2;
-      document.getElementById('val4x').innerText = s4;
-      document.getElementById('valSnip').innerText = snip;
-      document.getElementById('valDpi').innerText = dpi;
-      document.getElementById('valFire').innerText = fire;
+      document.getElementById("targetDevice").textContent =
+        name.toUpperCase();
 
-      // Animate Progress Bars
-      document.getElementById('barGen').style.width = gen + "%";
-      document.getElementById('barRed').style.width = red + "%";
-      document.getElementById('bar2x').style.width = s2 + "%";
-      document.getElementById('bar4x').style.width = s4 + "%";
-      document.getElementById('barSnip').style.width = snip + "%";
+      document.getElementById("valGen").textContent = gen;
+      document.getElementById("valRed").textContent = red;
+      document.getElementById("val2x").textContent = s2;
+      document.getElementById("val4x").textContent = s4;
+      document.getElementById("valSnip").textContent = snip;
+      document.getElementById("valDpi").textContent = dpi;
+      document.getElementById("valFire").textContent = fire;
 
-      document.getElementById('resBox').style.display = "block";
+      // Values are shown on a 0–200 scale.
+      document.getElementById("barGen").style.width =
+        Math.min(100, (gen / 200) * 100) + "%";
+
+      document.getElementById("barRed").style.width =
+        Math.min(100, (red / 200) * 100) + "%";
+
+      document.getElementById("bar2x").style.width =
+        Math.min(100, (s2 / 200) * 100) + "%";
+
+      document.getElementById("bar4x").style.width =
+        Math.min(100, (s4 / 200) * 100) + "%";
+
+      document.getElementById("barSnip").style.width =
+        Math.min(100, (snip / 200) * 100) + "%";
+
+      document.getElementById("resBox").style.display = "block";
     }
   </script>
 </body>
-</html>
+        </html>
