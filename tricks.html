@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One-Tap & Drag Headshot Masterclass | Free Fire</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07090e;
+      --card: #10141f;
+      --border: #1e2638;
+      --red: #ff2252;
+      --cyan: #00f0ff;
+      --yellow: #ffb703;
+      --green: #00e676;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    body { background-color: var(--bg); color: var(--text); padding: 15px 10px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+    .top-bar { width: 100%; max-width: 500px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 600; margin-right: 12px; }
+    .nav-links a:hover { color: var(--red); }
+    .badge { background: rgba(255, 34, 82, 0.15); border: 1px solid var(--red); color: var(--red); padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+    .header { text-align: center; margin-bottom: 20px; width: 100%; max-width: 500px; }
+    .header h1 { font-family: 'Orbitron', sans-serif; font-size: 1.7rem; font-weight: 900; text-transform: uppercase; color: #fff; }
+    .header h1 span { color: var(--red); }
+    .header p { color: var(--muted); font-size: 0.82rem; margin-top: 5px; }
+
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; width: 100%; max-width: 500px; box-shadow: 0 10px 40px rgba(0,0,0,0.6); margin-bottom: 15px; }
+
+    .gun-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+    .gun-btn { padding: 12px 8px; background: #07090e; border: 1px solid var(--border); border-radius: 8px; color: var(--muted); font-family: 'Rajdhani', sans-serif; font-size: 0.95rem; font-weight: 700; cursor: pointer; text-align: center; transition: 0.2s; }
+    .gun-btn.active { background: rgba(255, 34, 82, 0.15); border-color: var(--red); color: #fff; box-shadow: 0 0 12px rgba(255, 34, 82, 0.3); }
+
+    .motion-box { background: #07090e; border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-align: center; margin-bottom: 16px; }
+    .motion-title { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; font-weight: 700; }
+    .motion-name { font-family: 'Orbitron', sans-serif; font-size: 1.25rem; font-weight: 900; color: var(--cyan); margin: 6px 0; }
+    .motion-badge { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; background: rgba(0, 240, 255, 0.1); border: 1px solid var(--cyan); color: var(--cyan); }
+
+    .detail-card { background: #07090e; border-left: 3px solid var(--yellow); padding: 14px; border-radius: 6px; margin-bottom: 14px; }
+    .detail-card h4 { font-family: 'Rajdhani', sans-serif; font-size: 1rem; color: var(--yellow); text-transform: uppercase; margin-bottom: 6px; }
+    .detail-card p { font-size: 0.82rem; color: #cbd5e1; line-height: 1.5; }
+
+    .steps-list { padding-left: 18px; font-size: 0.82rem; color: #cbd5e1; line-height: 1.6; margin-top: 8px; }
+    .steps-list li { margin-bottom: 6px; }
+
+    .golden-rule { background: rgba(0, 230, 118, 0.08); border: 1px solid var(--green); border-radius: 10px; padding: 16px; width: 100%; max-width: 500px; margin-bottom: 20px; }
+    .golden-rule h3 { font-family: 'Orbitron', sans-serif; font-size: 0.95rem; color: var(--green); text-transform: uppercase; margin-bottom: 8px; }
+    .golden-rule p { font-size: 0.82rem; color: #cbd5e1; line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="nav-links">
+      <a href="index.html">← Hub</a>
+      <a href="sensi.html">Sensi</a>
+      <a href="dpi.html">DPI</a>
+      <a href="hud.html">HUD</a>
