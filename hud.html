@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pro Custom HUD & Fire Button Engine | Free Fire</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07090e;
+      --card: #10141f;
+      --border: #1e2638;
+      --red: #ff2252;
+      --cyan: #00f0ff;
+      --yellow: #ffb703;
+      --green: #00e676;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    body { background-color: var(--bg); color: var(--text); padding: 15px 10px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+    .top-bar { width: 100%; max-width: 500px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; font-weight: 600; margin-right: 12px; }
+    .nav-links a:hover { color: var(--yellow); }
+    .badge { background: rgba(255, 183, 3, 0.15); border: 1px solid var(--yellow); color: var(--yellow); padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+    .header { text-align: center; margin-bottom: 20px; width: 100%; max-width: 500px; }
+    .header h1 { font-family: 'Orbitron', sans-serif; font-size: 1.7rem; font-weight: 900; text-transform: uppercase; color: #fff; }
+    .header h1 span { color: var(--yellow); }
+    .header p { color: var(--muted); font-size: 0.82rem; margin-top: 5px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; width: 100%; max-width: 500px; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
+    .input-group { margin-bottom: 14px; }
+    label { display: block; font-family: 'Rajdhani', sans-serif; font-size: 0.95rem; font-weight: 700; color: #cbd5e1; margin-bottom: 6px; text-transform: uppercase; }
+    input[type="text"], select { width: 100%; padding: 12px 14px; background: #07090e; border: 1px solid var(--border); border-radius: 8px; color: #fff; font-size: 0.95rem; outline: none; }
+    input[type="text"]:focus, select:focus { border-color: var(--yellow); }
+    .claw-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 6px; }
+    .claw-btn { padding: 12px 6px; background: #07090e; border: 1px solid var(--border); border-radius: 8px; color: var(--muted); font-family: 'Rajdhani', sans-serif; font-size: 0.95rem; font-weight: 700; cursor: pointer; text-align: center; }
+    .claw-btn.active { background: rgba(255, 183, 3, 0.15); border-color: var(--yellow); color: #fff; }
+    .row { display: flex; gap: 10px; }
+    .col { flex: 1; }
+    .btn-calc { width: 100%; padding: 14px; background: linear-gradient(135deg, var(--yellow), #ff8800); border: none; border-radius: 8px; color: #07090e; font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 900; text-transform: uppercase; cursor: pointer; margin-top: 10px; }
+    .btn-calc:active { transform: scale(0.98); }
+    .results { display: none; margin-top: 25px; border-top: 1px solid var(--border); padding-top: 20px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 15px; }
+    .stat-box { background: #07090e; border: 1px solid var(--border); border-radius: 8px; padding: 10px 4px; text-align: center; }
+    .stat-box span { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; font-weight: 700; display: block; }
+    .stat-box .num { font-family: 'Orbitron', sans-serif; font-size: 1.15rem; font-weight: 900; margin-top: 4px; }
+    .tip-box { background: rgba(0, 230, 118, 0.08); border-left: 3px solid var(--green); padding: 12px; border-radius: 6px; font-size: 0.82rem; line-height: 1.45; margin-bottom: 15px; }
+    .tip-box strong { color: var(--green); }
+    .hud-list { background: #07090e; border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; }
+    .hud-list h4 { font-family: 'Rajdhani', sans-serif; font-size: 0.95rem; color: var(--yellow); text-transform: uppercase; margin-bottom: 6px; }
+    .hud-list ul { padding-left: 18px; font-size: 0.8rem; color: #cbd5e1; line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="nav-links">
+      <a href="index.html">← Hub</a>
+      <a href="sensi.html">Sensi</a>
+      <a href="dpi.html">DPI</a>
+    </div>
+    <span class="badge">HUD Layout Engine</span>
+  </div>
+
+  <div class="header">
+    <h1>PRO <span>CUSTOM HUD</span> & BUTTON</h1>
+    <p>Maximum Drag Space • Instant Gloo Wall • Pure Headshot Setup</p>
+  </div>
+
+  <div class="card">
+    <div class="input-group">
+      <label>Device Name (Keyboard se Type Karo):</label>
+      <input type="text" id="phoneName" placeholder="e.g. Realme P4x, Redmi Note 12..." autocomplete="off">
+    </div>
+
+    <div class="input-group">
+      <label>Select Your Finger Claw:</label>
+      <div class="claw-grid">
+        <button type="button" class="claw-btn active" id="claw2" onclick="setClaw(2)">2-Finger<br><small style="font-size:0.7rem; font-weight:normal;">Thumb</small></button>
+        <button type="button" class="claw-btn" id="claw3" onclick="setClaw(3)">3-Finger<br><small style="font-size:0.7rem; font-weight:normal;">Semi-Pro</small></button>
+        <button type="button" class="claw-btn" id="claw4" onclick="setClaw(4)">4-Finger<br><small style="font-size:0.7rem; font-weight:normal;">Esports</small></button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col input-group">
+        <label>Screen Size:</label>
+        <select id="screenSize">
+          <option value="compact">Under 6.5 inch (Small)</option>
+          <option value="standard" selected>6.6 - 6.8 inch (Normal)</option>
+          <option value="large">Tablet / iPad</option>
+        </select>
+      </div>
+      <div class="col input-group">
+        <label>Primary Gun Focus:</label>
+        <select id="gunType">
+          <option value="shotgun">M1887 / Shotguns</option>
+          <option value="smg">MP40 / UMP (SMG)</option>
+          <option value="rifle">Woodpecker / Desert Eagle</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn-calc" onclick="calculateHud()">Generate Pro HUD Setup ⚡</button>
+
+    <div class="results" id="resBox">
+      <div class="grid-3">
+        <div class="stat-box">
+          <span>Fire Button Size</span>
+          <div class="num" style="color:var(--red);" id="valFire">--</div>
+        </div>
+        <div class="stat-box">
+          <span>Gloo Wall Size</span>
+          <div class="num" style="color:var(--cyan);" id="valGloo">--</div>
+        </div>
+        <div class="stat-box">
+          <span>Quick Switch</span>
+          <div class="num" style="color:var(--green);" id="valSwitch">--</div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <strong>Fire Button Golden Rule:</strong> Button ko screen ke neeche se sirf <strong>15% se 20%</strong> unchai par rakhein. Jitna neeche button hoga, thumb ko upar drag karne ke liye utna hi bada rasta milega aur aim chest par atakna band ho jayega!
+      </div>
+
+      <div class="hud-list">
+        <h4 id="clawTitle">2-Finger Layout Key Positions:</h4>
+        <ul id="hudTips">
+          <!-- Populated by JS -->
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let activeClaw = 2;
+
+    function setClaw(claw) {
+      activeClaw = claw;
+      document.getElementById('claw2').classList.toggle('active', claw === 2);
+      document.getElementById('claw3').classList.toggle('active', claw === 3);
+      document.getElementById('claw4').classList.toggle('active', claw === 4);
+    }
+
+    function calculateHud() {
+      const screen = document.getElementById('screenSize').value;
+      const gun = document.getElementById('gunType').value;
+
+      let fireSize, glooSize, switchSize;
+
+      if (screen === 'compact') {
+        fireSize = (activeClaw === 2) ? "48%" : "44%";
+        glooSize = "100%";
+        switchSize = "85%";
+      } else if (screen === 'standard') {
+        fireSize = (activeClaw === 2) ? "44%" : "40%";
+        glooSize = "100%";
+        switchSize = "90%";
+      } else {
+        fireSize = "38%";
+        glooSize = "95%";
+        switchSize = "95%";
+      }
+
+      if (gun === 'shotgun') fireSize = (parseInt(fireSize) + 2) + "%";
+
+      document.getElementById('valFire').innerText = fireSize;
+      document.getElementById('valGloo').innerText = glooSize;
+      document.getElementById('valSwitch').innerText = switchSize;
+
+      const tipsList = document.getElementById('hudTips');
+      tipsList.innerHTML = "";
+
+      if (activeClaw === 2) {
+        document.getElementById('clawTitle').innerText = "2-Finger Layout Key Placement:";
+        tipsList.innerHTML += "<li><strong>Right Thumb:</strong> Fire Button (Bottom-Right), Jump (Right Center), Crouch (Beside Fire).</li>";
+        tipsList.innerHTML += "<li><strong>Left Thumb:</strong> Joystick, Gloo Wall Button (Bottom-Left me 100% size par taaki ek tap me lage).</li>";
+        tipsList.innerHTML += "<li>Quick Weapon Switch button ko Fire button ke upar rakhein fast reload/one-tap ke liye.</li>";
+      } else if (activeClaw === 3) {
+        document.getElementById('clawTitle').innerText = "3-Finger Semi-Pro Layout:";
+        tipsList.innerHTML += "<li><strong>Left Index Finger:</strong> Gloo Wall ya Jump button ko Top-Left corner me shift karo.</li>";
+        tipsList.innerHTML += "<li><strong>Left Thumb:</strong> Sirf Movement (Joystick) aur Sprint ke liye free rahega.</li>";
+        tipsList.innerHTML += "<li><strong>Right Thumb:</strong> Fire Button aur Aiming ke liye maximum space milega (Super Fast Drag).</li>";
+      } else {
+        document.getElementById('clawTitle').innerText = "4-Finger Esports Layout:";
+        tipsList.innerHTML += "<li><strong>Left Index:</strong> Quick Weapon Switch + Fire (Top Left).</li>";
+        tipsList.innerHTML += "<li><strong>Right Index:</strong> Jump + Scope (Top Right).</li>";
+        tipsList.innerHTML += "<li><strong>Thumbs:</strong> Movement aur Drag Aiming ke liye exclusive control deta hai — zero latency.</li>";
+      }
+
+      document.getElementById('resBox').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
